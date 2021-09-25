@@ -38,6 +38,7 @@ module.exports = {
                 if(!image){
                     const image = 'https://res.cloudinary.com/dnnq8kne2/image/upload/v1632408683/ucgxnbq2q0re1suhd6kp.jpg'
                 }
+                
                 const encrypt = await bcrypt.hash(password,8)
 
                 const user = new User({
