@@ -25,7 +25,6 @@ module.exports = {
             return "Dummy mutation"
         },
         async createUser( _,{ firstName,lastName,email,password,confirmPassword,image } ) {
-
             const newError = (err) => {
                 return new UserInputError('Errors', { err })
             }
