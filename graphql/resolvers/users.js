@@ -1,8 +1,10 @@
 
+require('dotenv').config()
 const bcrypt = require('bcrypt')
+const { GENERATE_LOGIN_TOKEN } = require('../../utils/token')
 
 // apollo
-const { CREATE_USER_VALIDATION } = require('../../utils/validation')
+const { CREATE_USER_VALIDATION,LOGIN_USER_VALIDATION } = require('../../utils/validation')
 
 // error
 const { UserInputError } = require('apollo-server-express')
@@ -24,6 +26,18 @@ module.exports = {
         async _() {
             return "Dummy mutation"
         },
+
+        async loginUser( _, { email,password } ) {
+            const { errors,valid,token } = await LOGIN_USER_VALIDATION(email,password)
+            try {
+                if(!valid) throw new UserInputError('Errors', { errors })
+
+                return token
+            }catch(e){
+                return e
+            }
+        },
+
         async createUser( _,{ firstName,lastName,email,password,confirmPassword,image } ) {
             const newError = (err) => {
                 return new UserInputError('Errors', { err })

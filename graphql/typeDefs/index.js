@@ -4,10 +4,19 @@ module.exports = gql`
 
     scalar Upload
 
+    type User {
+        firstName: String
+        lastName: String
+        email: String
+        createdAt: String
+        verified: String
+        token: String
+        refreshToken: String
+    }
+
     type Query {
         
         _: String
-    
     }
 
     type Mutation {
@@ -25,6 +34,11 @@ module.exports = gql`
             verified: String
             refreshToken: String
             createdAt: String
+        ): String
+
+        loginUser( 
+            email:String
+            password:String
         ): String
     }
 
