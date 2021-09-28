@@ -4,6 +4,12 @@ module.exports = gql`
 
     scalar Upload
 
+    type File {
+        filename: String
+        mimetype: String
+        encoding: String
+    }
+
     type User {
         firstName: String
         lastName: String
@@ -14,9 +20,15 @@ module.exports = gql`
         refreshToken: String
     }
 
+    type Post {
+        image: String
+    }
+
     type Query {
         
         _: String
+
+        checkAuth: User
     }
 
     type Mutation {
@@ -40,6 +52,11 @@ module.exports = gql`
             email:String
             password:String
         ): String
+
+        createPost(
+            image: Upload
+        ): String
+
     }
 
 `
