@@ -22,6 +22,11 @@ module.exports = gql`
         refreshToken: String
     }
 
+    type Image {
+        url: String
+        public_id: String
+    }
+
     type Post {
         image: String
     }
@@ -57,7 +62,7 @@ module.exports = gql`
 
         createPost(
             image: Upload
-        ): String
+        ): Image
 
     }
 

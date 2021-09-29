@@ -36,9 +36,9 @@ const getUrl = async (files) => {
 	}
 
 	const data = await fileUpload(createReadStream)
-	//const url = data.url.replace('upload/','upload/c_scale,h_150,w_150')
+	console.log(data)
 
-	return data.url
+	return data
 }
 
 
