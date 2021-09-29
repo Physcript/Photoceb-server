@@ -11,9 +11,11 @@ module.exports = gql`
     }
 
     type User {
+        _id: ID
         firstName: String
         lastName: String
         email: String
+        image: String
         createdAt: String
         verified: String
         token: String
