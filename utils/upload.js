@@ -36,12 +36,19 @@ const getUrl = async (files) => {
 	}
 
 	const data = await fileUpload(createReadStream)
-	console.log(data)
 
 	return data
 }
 
 
+const deleteUpload = (public_id) => {
+
+	cloudinary.uploader.destroy(public_id, function(result) { console.log(result) });
+
+}
+
+
 module.exports = {
-	getUrl
+	getUrl,
+	deleteUpload
 }

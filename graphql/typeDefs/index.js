@@ -28,8 +28,15 @@ module.exports = gql`
     }
 
     type Post {
+        _id: String
         image: String
+        firstName: String
+        email: String
+        createdAt: String
+        user: String
     }
+
+
 
     type Query {
         
@@ -64,6 +71,13 @@ module.exports = gql`
             image: Upload
         ): Image
 
+        deleteCreatePost(
+            public_id: String
+        ): String
+
+        create_post(
+            image: String
+        ): Post
     }
 
 `
