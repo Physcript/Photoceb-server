@@ -13,7 +13,6 @@ module.exports = {
 	
 	Mutation: {
 		async createPost(_,{image},context){
-			console.log(image)
 			const data = await getUrl(image)
 			return data	
 		},
@@ -36,9 +35,6 @@ module.exports = {
 				})
 
 				await post.save()
-
-				console.log(post)
-
 				return post;
 			}
 			catch(e){
