@@ -28,12 +28,13 @@ module.exports = gql`
     }
 
     type Post {
-        _id: String
+        _id: ID
         image: String
         firstName: String
         email: String
         createdAt: String
         user: String
+        postUser: User
     }
 
 
@@ -43,6 +44,8 @@ module.exports = gql`
         _: String
 
         checkAuth: User
+        getPost(limit: Int): [Post]
+        getPostLength: Int 
     }
 
     type Mutation {

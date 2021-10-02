@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 const postSchema = mongoose.Schema({
 	firstName: String,
-	image:String,
+	image: String,
 	email:String,
 	createdAt: String,
 	user: {

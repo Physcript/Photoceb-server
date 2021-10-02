@@ -76,7 +76,7 @@ module.exports = {
                     email,
                     password: encrypt,
                     confirmPassword,
-                    image,
+                    image: 'https://res.cloudinary.com/dnnq8kne2/image/upload/c_scale,h_30,w_30/v1632408683/ucgxnbq2q0re1suhd6kp.jpg',
                     createdAt: new Date().toISOString(),
                     verified: false
                 })
