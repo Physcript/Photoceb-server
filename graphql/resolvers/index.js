@@ -1,6 +1,7 @@
 
 const usersResolver = require('./users')
 const postsResolver = require('./posts')
+const likesResolver = require('./likes')
 
 const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload')
 
@@ -14,6 +15,7 @@ module.exports = {
     },
     Mutation: {
         ...usersResolver.Mutation,
-        ...postsResolver.Mutation
+        ...postsResolver.Mutation,
+        ...likesResolver.Mutation,
     }
 }

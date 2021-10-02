@@ -81,6 +81,8 @@ module.exports = gql`
         create_post(
             image: String
         ): Post
+
+        createLike(postId: String): String
     }
 
 `
