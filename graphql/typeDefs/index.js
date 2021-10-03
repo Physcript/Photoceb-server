@@ -27,6 +27,7 @@ module.exports = gql`
         public_id: String
     }
 
+
     type Post {
         _id: ID
         image: String
@@ -37,6 +38,10 @@ module.exports = gql`
         postUser: User
     }
 
+    type CountLikeDislike {
+        countLike: Int
+        countDislike: Int
+    }
 
 
     type Query {
@@ -46,6 +51,8 @@ module.exports = gql`
         checkAuth: User
         getPost(limit: Int): [Post]
         getPostLength: Int 
+        getCountLikeDislike(postId: String): CountLikeDislike
+
     }
 
     type Mutation {
@@ -83,6 +90,7 @@ module.exports = gql`
         ): Post
 
         createLike(postId: String): String
+        createDislike(postId: String): String
     }
 
 `
