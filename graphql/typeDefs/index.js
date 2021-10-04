@@ -43,6 +43,11 @@ module.exports = gql`
         countDislike: Int
     }
 
+    type LikeDislike {
+        like: Boolean
+        dislike: Boolean
+    }
+
 
     type Query {
         
@@ -52,6 +57,7 @@ module.exports = gql`
         getPost(limit: Int): [Post]
         getPostLength: Int 
         getCountLikeDislike(postId: String): CountLikeDislike
+        getLikeInfo(postId: String): LikeDislike
 
     }
 

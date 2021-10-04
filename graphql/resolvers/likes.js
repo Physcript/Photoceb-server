@@ -14,6 +14,7 @@ module.exports = {
 
 	Query: {
 		async getCountLikeDislike(_,{postId},context){
+
 			const countLike = await Like.find({ postId }).count()
 			const countDislike = await Dislike.find({postId}).count()
 
@@ -23,8 +24,35 @@ module.exports = {
 				countDislike
 
 			}
+		},
+
+		async getLikeInfo(_,{postId},context){
+			const user = await auth(context)
+			try {
+
+				const chk_likePost = await Like.findOne({ postId, userId: user._id })
+				const chk_dislikePost = await Dislike.findOne({ postId, userId: user._id })
+
+				const data = {
+					like: false,
+					dislike: false
+				}
+
+				if(chk_likePost) data.like = true
+
+				if(chk_dislikePost) data.dislike = true
+
+				return {
+					like: data.like,
+					dislike: data.dislike
+				}
+
+			}catch(e){
+				return e
+			}
 		}
 	},
+
 	Mutation: {
 
 
@@ -57,7 +85,7 @@ module.exports = {
 					const chk_like = await Like.findOne({ postId: post._id , userId: user._id })
 
 					if(chk_like){
-						console.log('detected')
+						
 						await chk_like.remove()
 
 					}
